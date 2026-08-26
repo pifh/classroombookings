@@ -260,6 +260,7 @@ class MY_Controller extends CI_Controller
 			'constraint',
 			'custom_field',
 			'department',
+			'email',
 			'exception',
 			'export',
 			'holiday',

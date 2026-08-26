@@ -7,6 +7,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 use app\components\bookings\exceptions\AgentException;
 use Permission;
+use Events;
+use EventType;
 
 
 /**
@@ -44,6 +46,9 @@ class UpdateAgent extends BaseAgent
 
 	// Features
 	private $features = [];
+
+	// Whether the current user is the owner of the booking being edited
+	private $is_booking_owner = false;
 
 
 	/**
@@ -97,6 +102,7 @@ class UpdateAgent extends BaseAgent
 		$this->edit_mode = $this->CI->input->post_get('edit') ?: self::EDIT_ONE;
 
 		$is_booking_owner = ($this->booking->user_id == $this->user->user_id);
+		$this->is_booking_owner = $is_booking_owner;
 		if ($this->booking->repeat_id) {
 			$can_view_notes = has_permission(Permission::BK_RECUR_VIEW_OTHER_NOTES, $this->booking->room_id);
 			$can_view_user = has_permission(Permission::BK_RECUR_VIEW_OTHER_USERS, $this->booking->room_id);
@@ -217,6 +223,11 @@ class UpdateAgent extends BaseAgent
 			$booking_data['notes'] = $this->CI->input->post('notes');
 		}
 
+		// Capture the pre-update owner's details, in case the edit itself
+		// reassigns the booking to a different user.
+		$notify_user_id = $this->booking->user_id;
+		$notify_email = $this->booking->user->email ?? null;
+
 		$update = $this->CI->bookings_model->update($this->booking->booking_id, $booking_data, $this->edit_mode);
 
 		if ($update) {
@@ -229,6 +240,15 @@ class UpdateAgent extends BaseAgent
 
 			$this->message = $msgs[$this->edit_mode];
 			$this->success = TRUE;
+
+			if ( ! $this->is_booking_owner && ! empty($notify_email)) {
+				Events::trigger(EventType::BOOKING_UPDATED_BY_ADMIN, [
+					'booking_id' => $this->booking->booking_id,
+					'notify_user_id' => $notify_user_id,
+					'notify_email' => $notify_email,
+					'actor_user_id' => $this->user->user_id,
+				]);
+			}
 
 			return TRUE;
 		}

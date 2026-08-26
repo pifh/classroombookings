@@ -21,6 +21,18 @@ class Bookings_repeat_model extends CI_Model
 	}
 
 
+	public function include($objects)
+	{
+		if ( ! is_array($objects)) {
+			$objects = [ $objects ];
+		}
+
+		$this->include = $objects;
+
+		return $this;
+	}
+
+
 	/**
 	 * Get Repeat by ID
 	 *

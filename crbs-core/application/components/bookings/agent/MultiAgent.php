@@ -9,6 +9,8 @@ use app\components\bookings\exceptions\AgentException;
 use app\components\bookings\Slot;
 use \Bookings_model;
 use Permission;
+use Events;
+use EventType;
 
 
 /**
@@ -430,6 +432,18 @@ class MultiAgent extends BaseAgent
 			$this->CI->multi_booking_model->delete($multibooking->mb_id);
 			$this->success = true;
 			$this->message = sprintf(lang('booking.success.some_created'), count($booking_ids));
+
+			// Trigger one BOOKING_CREATED event per distinct owner, not per booking.
+			$ids_by_owner = [];
+			foreach ($booking_ids as $i => $booking_id) {
+				$owner_id = $rows[$i]['user_id'] ?? null;
+				if (empty($owner_id)) continue;
+				$ids_by_owner[$owner_id][] = $booking_id;
+			}
+			foreach ($ids_by_owner as $owner_booking_ids) {
+				Events::trigger(EventType::BOOKING_CREATED, ['booking_ids' => $owner_booking_ids]);
+			}
+
 			return true;
 		}
 
@@ -699,6 +713,7 @@ class MultiAgent extends BaseAgent
 		$multibooking = $this->view_data['multibooking'];
 
 		$repeat_ids = [];
+		$repeat_ids_by_owner = [];
 
 		$user_constraints = $this->CI->users_model->get_constraints($this->user->user_id);
 		$max_instances = $user_constraints['recur_max_instances'];
@@ -751,6 +766,9 @@ class MultiAgent extends BaseAgent
 			}
 
 			$repeat_ids[] = $repeat_id;
+			if ( ! empty($repeat_data['user_id'])) {
+				$repeat_ids_by_owner[$repeat_data['user_id']][] = $repeat_id;
+			}
 		}
 
 		if ($this->CI->db->trans_status() === FALSE) {
@@ -764,6 +782,12 @@ class MultiAgent extends BaseAgent
 		$this->success = TRUE;
 		$line = lang('booking.success.recurring.some_created');
 		$this->message = sprintf($line, count($repeat_ids));
+
+		// Trigger one BOOKING_CREATED event per distinct owner, not per series.
+		foreach ($repeat_ids_by_owner as $owner_repeat_ids) {
+			Events::trigger(EventType::BOOKING_CREATED, ['repeat_ids' => $owner_repeat_ids, 'summary' => true]);
+		}
+
 		return TRUE;
 	}
 

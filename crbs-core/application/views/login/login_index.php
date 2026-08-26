@@ -52,3 +52,7 @@ $this->load->view('partials/submit', array(
 ));
 
 echo form_close();
+
+?>
+
+<p><a href="<?= site_url('login/forgot') ?>"><?= lang('auth.forgot.link') ?></a></p>

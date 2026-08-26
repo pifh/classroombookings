@@ -70,6 +70,11 @@ class Menu_model extends CI_Model
 				'icon' => 'world.png',
 				'url' => site_url('setup/language'),
 			];
+			$items['setup'][] = [
+				'label' => lang('settings.email'),
+				'icon' => 'email_go.png',
+				'url' => site_url('settings/email'),
+			];
 		}
 
 		if (has_permission(Permission::SETUP_SESSIONS)) {

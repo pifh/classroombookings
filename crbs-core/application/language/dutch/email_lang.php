@@ -1,31 +1,35 @@
 <?php
-/**
- * System messages translation for CodeIgniter(tm)
- *
- * @author	CodeIgniter community
- * @copyright	Copyright (c) 2014-2019, British Columbia Institute of Technology (https://bcit.ca/)
- * @copyright	Pieter Krul
- * @license	http://opensource.org/licenses/MIT	MIT License
- * @link	https://codeigniter.com
- */
-defined('BASEPATH') OR exit('Directe toegang tot scripts is niet toegestaan');
 
-$lang['email_must_be_array']		= 'De e-mail validatie methode moet de array passeren.';
-$lang['email_invalid_address']		= 'De opgegeven waarde is geen geldig e-mailadres: %s';
-$lang['email_attachment_missing']	= 'De bijlage bij dit bericht kan niet gevonden worden: %s';
-$lang['email_attachment_unreadable']	= 'De bijlage kan niet worden gelezen: %s';
-$lang['email_no_from']			= 'E-mail kan niet verstuurd worden zonder "From"-header.';
-$lang['email_no_recipients']		= 'Ontvangers (Naar, Cc, of Bcc) zijn verplicht.';
-$lang['email_send_failure_phpmail']	= 'Het lukt niet om de e-mail te versturen met PHP mail(). Deze server zou wel eens een andere methode gebruiken om berichten te sturen.';
-$lang['email_send_failure_sendmail']	= 'Het lukt niet om de e-mail te versturen met PHP Sendmail. Deze server zou wel eens een andere methode gebruiken om berichten te sturen.';
-$lang['email_send_failure_smtp']	= 'Het lukt niet om de e-mail te versturen met PHP SMTP.  Deze server zou wel eens een andere methode gebruiken om berichten te sturen.';
-$lang['email_sent']			= 'Het bericht is verstuurd, via het volgende protocol: %s';
-$lang['email_no_socket']		= 'Het lukt niet om een socket naar Sendmail te openen.  Controleer instellingen.';
-$lang['email_no_hostname']		= 'Specifieer een SMTP-hostnaam.';
-$lang['email_smtp_error']		= 'Tegengehouden door een SMTP-foutmelding: %s';
-$lang['email_no_smtp_unpw']		= 'Fout: geef een SMTP-gebruikersnaam met wachtwoord op.';
-$lang['email_failed_smtp_login']	= 'De "AUTH LOGIN"-opdracht gaf een foutmelding bij het versturen: %s';
-$lang['email_smtp_auth_un']		= 'Bij het authenticeren gaf de gebruikersnaam een foutmelding: %s';
-$lang['email_smtp_auth_pw']		= 'Bij het authenticeren gaf het wachtwoord een foutmelding:  %s';
-$lang['email_smtp_data_failure']	= 'Versturen van data is mislukt: %s';
-$lang['email_exit_status']		= 'Exit statuscode: %s.';
+// English fallback (not yet translated for this language).
+// Ensures this file exists so the app doesn't error when this language is active.
+
+$lang['email.test.subject'] = 'Test email from classroombookings';
+
+$lang['email.password_reset.subject'] = 'Reset your password';
+$lang['email.password_reset.hello'] = 'Hello %s,';
+$lang['email.password_reset.intro'] = 'We received a request to reset your password. Click the button below to choose a new one.';
+$lang['email.password_reset.button'] = 'Reset password';
+$lang['email.password_reset.fallback'] = "If the button above doesn't work, copy and paste this link into your browser:";
+$lang['email.password_reset.expiry'] = 'This link will expire in 1 hour.';
+$lang['email.password_reset.ignore'] = 'If you did not request a password reset, you can safely ignore this email.';
+
+$lang['email.booking_created.subject'] = 'Booking confirmed';
+$lang['email.booking_created.hello'] = 'Hello %s,';
+$lang['email.booking_created.intro'] = 'Your booking has been confirmed with the following details:';
+$lang['email.booking_created.view_link'] = 'View booking';
+
+$lang['email.booking_created_summary.subject'] = 'Recurring booking confirmed';
+$lang['email.booking_created_summary.hello'] = 'Hello %s,';
+$lang['email.booking_created_summary.intro'] = 'Your recurring booking has been confirmed for %d date(s), with the following details:';
+$lang['email.booking_created_summary.view_link'] = 'View bookings';
+
+$lang['email.booking_cancelled.subject'] = 'Booking cancelled';
+$lang['email.booking_cancelled.hello'] = 'Hello %s,';
+$lang['email.booking_cancelled.intro_self'] = 'Your booking has been cancelled, as requested.';
+$lang['email.booking_cancelled.intro_by_admin'] = 'Your booking has been cancelled by an administrator.';
+$lang['email.booking_cancelled.scope_note'] = 'This also cancelled any related recurring instances.';
+
+$lang['email.booking_updated_by_admin.subject'] = 'Your booking was changed';
+$lang['email.booking_updated_by_admin.hello'] = 'Hello %s,';
+$lang['email.booking_updated_by_admin.intro'] = 'An administrator has made changes to one of your bookings. The current details are:';
+$lang['email.booking_updated_by_admin.view_link'] = 'View booking';

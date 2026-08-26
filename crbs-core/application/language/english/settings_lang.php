@@ -2,6 +2,26 @@
 
 $lang['settings.settings'] = 'Settings';
 
+$lang['settings.email'] = 'Email';
+$lang['settings.email.enabled'] = 'Enable';
+$lang['settings.email.host'] = 'SMTP host';
+$lang['settings.email.port'] = 'SMTP port';
+$lang['settings.email.encryption'] = 'Encryption';
+$lang['settings.email.encryption.none'] = 'None';
+$lang['settings.email.username'] = 'SMTP username';
+$lang['settings.email.password'] = 'SMTP password';
+$lang['settings.email.from_email'] = 'From address';
+$lang['settings.email.from_name'] = 'From name';
+$lang['settings.email.save.success'] = 'The email settings have been updated.';
+
+$lang['settings.email.test.title'] = 'Send a test email';
+$lang['settings.email.test.hint'] = 'Save your settings first, then send a test email to confirm they work.';
+$lang['settings.email.test.send_to'] = 'Send to';
+$lang['settings.email.test.button'] = 'Send test email';
+$lang['settings.email.test.body'] = 'This is a test email from classroombookings. If you received this, your email settings are working.';
+$lang['settings.email.test.success'] = 'Test email sent successfully.';
+$lang['settings.email.test.error'] = 'Failed to send test email. Check your settings and the application log for details.';
+
 $lang['settings.general.bookings'] = 'Bookings';
 $lang['settings.general.datetime'] = 'Dates and Times';
 $lang['settings.general.datetime.hint'] = 'Dates follow the PHP format';

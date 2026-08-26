@@ -8,6 +8,8 @@ use app\components\bookings\exceptions\AgentException;
 use app\components\bookings\Slot;
 use \Bookings_model;
 use Permission;
+use Events;
+use EventType;
 
 
 /**
@@ -332,6 +334,7 @@ class SingleAgent extends BaseAgent
 		if ($booking_id) {
 			$this->success = TRUE;
 			$this->message = lang('booking.success.created');
+			Events::trigger(EventType::BOOKING_CREATED, ['booking_id' => $booking_id]);
 			return TRUE;
 		}
 
@@ -541,6 +544,7 @@ class SingleAgent extends BaseAgent
 
 		$this->success = TRUE;
 		$this->message = lang('booking.success.created.multiple');
+		Events::trigger(EventType::BOOKING_CREATED, ['repeat_id' => $repeat_id, 'summary' => true]);
 		return TRUE;
 	}
 

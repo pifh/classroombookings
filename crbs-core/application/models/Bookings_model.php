@@ -565,7 +565,17 @@ class Bookings_model extends CI_Model
 			'cancelled_by' => $this->userauth->user->user_id,
 		];
 
-		return $this->db->update($this->table, $data, ['booking_id' => $booking_id], 1);
+		$result = $this->db->update($this->table, $data, ['booking_id' => $booking_id], 1);
+
+		if ($result) {
+			Events::trigger(EventType::BOOKING_CANCELLED, [
+				'booking_id' => $booking_id,
+				'actor_user_id' => $this->userauth->user->user_id,
+				'scope' => '1',
+			]);
+		}
+
+		return $result;
 	}
 
 
@@ -591,7 +601,17 @@ class Bookings_model extends CI_Model
 			'date >=' => $booking->date->format('Y-m-d'),
 		];
 
-		return $this->db->update($this->table, $data, $where);
+		$result = $this->db->update($this->table, $data, $where);
+
+		if ($result) {
+			Events::trigger(EventType::BOOKING_CANCELLED, [
+				'booking_id' => $booking_id,
+				'actor_user_id' => $this->userauth->user->user_id,
+				'scope' => 'future',
+			]);
+		}
+
+		return $result;
 	}
 
 
@@ -616,7 +636,17 @@ class Bookings_model extends CI_Model
 
 		$update2 = $this->db->update('bookings_repeat', $data, $where, 1);
 
-		return ($update1 && $update2);
+		$result = ($update1 && $update2);
+
+		if ($result) {
+			Events::trigger(EventType::BOOKING_CANCELLED, [
+				'booking_id' => $booking_id,
+				'actor_user_id' => $this->userauth->user->user_id,
+				'scope' => 'all',
+			]);
+		}
+
+		return $result;
 	}
 
 

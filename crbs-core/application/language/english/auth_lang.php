@@ -7,6 +7,18 @@ $lang['auth.bad_credentials'] = 'Incorrect username and/or password.';
 $lang['auth.login_required'] = 'You must be logged in to access that page.';
 $lang['auth.permission_required'] = 'You do not have required permissions to access that page.';
 
+$lang['auth.forgot.link'] = 'Forgot your password?';
+$lang['auth.forgot.title'] = 'Forgot password';
+$lang['auth.forgot.intro'] = 'Enter your username and, if an account exists with an email address on file, we will send you a link to reset your password.';
+$lang['auth.forgot.submit'] = 'Send reset link';
+$lang['auth.forgot.success'] = 'If an account with that username exists, a password reset link has been sent to the email address on file.';
+
+$lang['auth.reset.title'] = 'Reset password';
+$lang['auth.reset.intro'] = 'Choose a new password for your account.';
+$lang['auth.reset.submit'] = 'Set new password';
+$lang['auth.reset.success'] = 'Your password has been updated. You can now log in.';
+$lang['auth.reset.invalid_token'] = 'This password reset link is invalid or has expired. Please request a new one.';
+
 $lang['auth.authentication'] = 'Authentication';
 $lang['auth.ldap.ldap'] = 'LDAP';
 $lang['auth.ldap.connection'] = 'Connection';
