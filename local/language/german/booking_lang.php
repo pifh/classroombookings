@@ -157,3 +157,8 @@ $lang['booking.toggle_multi_select'] = 'Mehrfachauswahl umschalten';
 
 $lang['booking.status.booked'] = 'Gebucht';
 $lang['booking.status.cancelled'] = 'Storniert';
+
+$lang['board.title'] = 'Raumstatus';
+$lang['board.now'] = 'Jetzt';
+$lang['board.next'] = 'Als Nächstes';
+$lang['board.empty'] = 'Derzeit keine Räume belegt.';

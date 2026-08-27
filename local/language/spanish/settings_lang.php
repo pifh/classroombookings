@@ -21,6 +21,11 @@ $lang['settings.email.test.body'] = 'Este es un correo de prueba de classroomboo
 $lang['settings.email.test.success'] = 'Correo de prueba enviado correctamente.';
 $lang['settings.email.test.error'] = 'No se pudo enviar el correo de prueba. Revisa tu configuración y el registro de la aplicación.';
 
+$lang['settings.board'] = 'Panel de disponibilidad';
+$lang['settings.board.intro'] = 'Elige qué salas aparecen en el panel público "ahora / a continuación" (accesible sin iniciar sesión). Solo se muestran las salas ocupadas.';
+$lang['settings.board.save.success'] = 'La configuración del panel se ha actualizado.';
+$lang['settings.board.no_rooms'] = 'Todavía no se ha configurado ninguna sala.';
+
 $lang['settings.general.bookings'] = 'Reservas';
 $lang['settings.general.datetime'] = 'Fechas y horas';
 $lang['settings.general.datetime.hint'] = 'Las fechas siguen el formato PHP';

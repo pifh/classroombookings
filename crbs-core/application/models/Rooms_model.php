@@ -217,6 +217,25 @@ class Rooms_model extends CI_Model
 	}
 
 
+	public function get_by_ids(array $ids)
+	{
+		if (empty($ids)) return [];
+
+		$this->db->reset_query();
+		$this->build_rooms_query();
+		$this->db->where_in($this->primary_key, $ids);
+
+		$query = $this->db->get();
+		$result = $query->result();
+
+		foreach ($result as &$row) {
+			$row = $this->wake_value($row);
+		}
+
+		return $result;
+	}
+
+
 	public function update_pos($data)
 	{
 		return $this->db->update_batch($this->table, $data, 'room_id');

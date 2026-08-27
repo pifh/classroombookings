@@ -21,6 +21,11 @@ $lang['settings.email.test.body'] = "Ceci est un email de test de classroombooki
 $lang['settings.email.test.success'] = 'Email de test envoyé avec succès.';
 $lang['settings.email.test.error'] = "Échec de l'envoi de l'email de test. Vérifiez vos réglages et le journal de l'application.";
 
+$lang['settings.board'] = "Écran d'affichage";
+$lang['settings.board.intro'] = "Choisissez les salles qui apparaissent sur l'écran public \"maintenant / à suivre\" (accessible sans connexion). Seules les salles occupées y sont affichées.";
+$lang['settings.board.save.success'] = "Les réglages de l'écran ont été mis à jour.";
+$lang['settings.board.no_rooms'] = "Aucune salle n'a encore été configurée.";
+
 $lang['settings.general.bookings'] = 'Réservations';
 $lang['settings.general.datetime'] = 'Dates et heures';
 $lang['settings.general.datetime.hint'] = 'Les dates suivent le format PHP';

@@ -22,6 +22,11 @@ $lang['settings.email.test.body'] = 'This is a test email from classroombookings
 $lang['settings.email.test.success'] = 'Test email sent successfully.';
 $lang['settings.email.test.error'] = 'Failed to send test email. Check your settings and the application log for details.';
 
+$lang['settings.board'] = 'Now board';
+$lang['settings.board.intro'] = 'Choose which rooms appear on the public "now/next" board (accessible without logging in). Only occupied rooms are shown there.';
+$lang['settings.board.save.success'] = 'The board settings have been updated.';
+$lang['settings.board.no_rooms'] = 'No rooms have been set up yet.';
+
 $lang['settings.general.bookings'] = 'Bookings';
 $lang['settings.general.datetime'] = 'Dates and Times';
 $lang['settings.general.datetime.hint'] = 'Dates follow the PHP format';

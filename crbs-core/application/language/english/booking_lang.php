@@ -157,3 +157,8 @@ $lang['booking.toggle_multi_select'] = 'Toggle multi-select';
 
 $lang['booking.status.booked'] = 'Booked';
 $lang['booking.status.cancelled'] = 'Cancelled';
+
+$lang['board.title'] = 'Room status';
+$lang['board.now'] = 'Now';
+$lang['board.next'] = 'Next';
+$lang['board.empty'] = 'No rooms currently occupied.';

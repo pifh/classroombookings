@@ -21,6 +21,11 @@ $lang['settings.email.test.body'] = 'Dies ist eine Test-E-Mail von classroombook
 $lang['settings.email.test.success'] = 'Test-E-Mail erfolgreich gesendet.';
 $lang['settings.email.test.error'] = 'Test-E-Mail konnte nicht gesendet werden. Überprüfen Sie Ihre Einstellungen und das Anwendungsprotokoll.';
 
+$lang['settings.board'] = 'Anzeigetafel';
+$lang['settings.board.intro'] = 'Wählen Sie, welche Räume auf der öffentlichen "Jetzt/Als Nächstes"-Tafel angezeigt werden (ohne Anmeldung zugänglich). Dort werden nur belegte Räume angezeigt.';
+$lang['settings.board.save.success'] = 'Die Tafel-Einstellungen wurden aktualisiert.';
+$lang['settings.board.no_rooms'] = 'Es wurden noch keine Räume eingerichtet.';
+
 $lang['settings.general.bookings'] = 'Buchungen';
 $lang['settings.general.datetime'] = 'Datum und Uhrzeit';
 $lang['settings.general.datetime.hint'] = 'Daten folgen dem PHP-Format';

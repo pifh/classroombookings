@@ -157,3 +157,8 @@ $lang['booking.toggle_multi_select'] = 'Activer/désactiver la sélection multip
 
 $lang['booking.status.booked'] = 'Réservé';
 $lang['booking.status.cancelled'] = 'Annulée';
+
+$lang['board.title'] = 'État des salles';
+$lang['board.now'] = 'Maintenant';
+$lang['board.next'] = 'À suivre';
+$lang['board.empty'] = 'Aucune salle occupée actuellement.';

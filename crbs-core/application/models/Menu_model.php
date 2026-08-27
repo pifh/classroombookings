@@ -75,6 +75,11 @@ class Menu_model extends CI_Model
 				'icon' => 'email_go.png',
 				'url' => site_url('settings/email'),
 			];
+			$items['setup'][] = [
+				'label' => lang('settings.board'),
+				'icon' => 'calendar_view_day.png',
+				'url' => site_url('settings/board'),
+			];
 		}
 
 		if (has_permission(Permission::SETUP_SESSIONS)) {

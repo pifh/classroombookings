@@ -166,6 +166,67 @@ class Bookings_model extends CI_Model
 
 
 	/**
+	 * Find active bookings for a set of rooms and periods on a given date.
+	 * Used by the public "now/next" board.
+	 *
+	 */
+	public function find_occupying(array $room_ids, array $period_ids, $date)
+	{
+		if (empty($room_ids) || empty($period_ids)) return [];
+
+		$this->db->reset_query();
+
+		$this->db->select([
+			'b.booking_id',
+			'b.period_id',
+			'b.room_id',
+			'b.user_id',
+			'b.date',
+			'b.status',
+			'b.notes',
+			'p.time_start',
+			'p.time_end',
+		]);
+
+		$this->db->select([
+			'u.user_id AS user__user_id',
+			'u.username AS user__username',
+			'u.displayname AS user__displayname'
+		], FALSE);
+
+		$this->db->select([
+			'rm.room_id AS room__room_id',
+			'rm.name AS room__name',
+		], FALSE);
+
+		$this->db->select([
+			'p.name AS period__name',
+			'p.time_start AS period__time_start',
+			'p.time_end AS period__time_end',
+		]);
+
+		$this->db->from("{$this->table} AS b");
+		$this->db->join('periods p', 'period_id', 'INNER');
+		$this->db->join('rooms rm', 'room_id', 'INNER');
+		$this->db->join('users u', 'b.user_id = u.user_id', 'LEFT');
+
+		$this->db->where('b.date', $date);
+		$this->db->where('b.status', self::STATUS_BOOKED);
+		$this->db->where_in('b.room_id', $room_ids);
+		$this->db->where_in('b.period_id', $period_ids);
+
+		$query = $this->db->get();
+		$result = $query->result();
+
+		foreach ($result as &$row) {
+			$row = $this->wake_value($row);
+		}
+
+		return $result;
+	}
+
+
+	/**
 	 * Find all bookings in a repeating series.
 	 *
 	 */
