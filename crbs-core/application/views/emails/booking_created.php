@@ -9,6 +9,9 @@
 	<?php if (!empty($booking->notes)): ?>
 	<tr><td><strong><?= lang('booking.notes') ?>:</strong></td><td><?= html_escape($booking->notes) ?></td></tr>
 	<?php endif; ?>
+	<?php if (!empty($created_by_name)): ?>
+	<tr><td><strong><?= lang('email.booking_created.by') ?>:</strong></td><td><?= html_escape($created_by_name) ?></td></tr>
+	<?php endif; ?>
 </table>
 
 <p><a href="<?= html_escape($view_url) ?>"><?= lang('email.booking_created.view_link') ?></a></p>

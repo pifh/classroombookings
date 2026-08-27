@@ -12,6 +12,9 @@
 	<tr><td><strong><?= lang('room.room') ?>:</strong></td><td><?= html_escape($booking->room->name) ?></td></tr>
 	<tr><td><strong><?= lang('app.date') ?>:</strong></td><td><?= html_escape(date_output_long($booking->date)) ?></td></tr>
 	<tr><td><strong><?= lang('period.period') ?>:</strong></td><td><?= html_escape($booking->period->name) ?> (<?= html_escape(date_output_time($booking->period->time_start)) ?> - <?= html_escape(date_output_time($booking->period->time_end)) ?>)</td></tr>
+	<?php if ($cancelled_by_admin && !empty($actor_name)): ?>
+	<tr><td><strong><?= lang('email.booking_cancelled.by') ?>:</strong></td><td><?= html_escape($actor_name) ?></td></tr>
+	<?php endif; ?>
 </table>
 
 <?php if ($scope !== '1'): ?>

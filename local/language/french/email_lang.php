@@ -14,6 +14,7 @@ $lang['email.booking_created.subject'] = 'Réservation confirmée';
 $lang['email.booking_created.hello'] = 'Bonjour %s,';
 $lang['email.booking_created.intro'] = 'Votre réservation a été confirmée avec les détails suivants :';
 $lang['email.booking_created.view_link'] = 'Voir la réservation';
+$lang['email.booking_created.by'] = 'Réservé par';
 
 $lang['email.booking_created_summary.subject'] = 'Réservation récurrente confirmée';
 $lang['email.booking_created_summary.hello'] = 'Bonjour %s,';
@@ -25,8 +26,10 @@ $lang['email.booking_cancelled.hello'] = 'Bonjour %s,';
 $lang['email.booking_cancelled.intro_self'] = 'Votre réservation a été annulée, comme demandé.';
 $lang['email.booking_cancelled.intro_by_admin'] = 'Votre réservation a été annulée par un administrateur.';
 $lang['email.booking_cancelled.scope_note'] = 'Cela a également annulé les occurrences récurrentes associées.';
+$lang['email.booking_cancelled.by'] = 'Annulé par';
 
 $lang['email.booking_updated_by_admin.subject'] = 'Votre réservation a été modifiée';
 $lang['email.booking_updated_by_admin.hello'] = 'Bonjour %s,';
 $lang['email.booking_updated_by_admin.intro'] = "Un administrateur a apporté des modifications à l'une de vos réservations. Les détails actuels sont :";
 $lang['email.booking_updated_by_admin.view_link'] = 'Voir la réservation';
+$lang['email.booking_updated_by_admin.by'] = 'Modifié par';

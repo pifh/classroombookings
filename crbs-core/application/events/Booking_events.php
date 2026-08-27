@@ -45,14 +45,16 @@ class Booking_events
 			$this->CI->load->library('mailer');
 			$this->CI->load->helper('date');
 
+			$actor_user_id = $data['actor_user_id'] ?? null;
+
 			if (isset($data['booking_id'])) {
-				$this->send_booking_created($data['booking_id']);
+				$this->send_booking_created($data['booking_id'], $actor_user_id);
 			} elseif (isset($data['repeat_id'])) {
-				$this->send_recurring_created($data['repeat_id']);
+				$this->send_recurring_created($data['repeat_id'], $actor_user_id);
 			} elseif (!empty($data['booking_ids'])) {
-				$this->send_bookings_created_grouped($data['booking_ids']);
+				$this->send_bookings_created_grouped($data['booking_ids'], $actor_user_id);
 			} elseif (!empty($data['repeat_ids'])) {
-				$this->send_recurring_created_grouped($data['repeat_ids']);
+				$this->send_recurring_created_grouped($data['repeat_ids'], $actor_user_id);
 			}
 
 		} catch (Throwable $e) {
@@ -82,6 +84,7 @@ class Booking_events
 			}
 
 			$cancelled_by_admin = ((int) $data['actor_user_id'] !== (int) $booking->user_id);
+			$actor_name = $cancelled_by_admin ? $this->get_display_name($data['actor_user_id']) : null;
 
 			$this->CI->mailer->send(
 				$booking->user->email,
@@ -92,6 +95,7 @@ class Booking_events
 					'booking' => $booking,
 					'user' => $booking->user,
 					'cancelled_by_admin' => $cancelled_by_admin,
+					'actor_name' => $actor_name,
 					'scope' => $data['scope'] ?? '1',
 				]
 			);
@@ -125,6 +129,7 @@ class Booking_events
 
 			$notify_user = $this->CI->users_model->get_by_id($data['notify_user_id']);
 			$name = $notify_user ? ($notify_user->displayname ?: $notify_user->username) : $data['notify_email'];
+			$actor_name = $this->get_display_name($data['actor_user_id']);
 
 			$this->CI->mailer->send(
 				$data['notify_email'],
@@ -134,6 +139,7 @@ class Booking_events
 				[
 					'booking' => $booking,
 					'user' => (object) ['displayname' => $name, 'username' => $name],
+					'actor_name' => $actor_name,
 					'view_url' => site_url('bookings/view/' . $booking->booking_id),
 				]
 			);
@@ -144,13 +150,15 @@ class Booking_events
 	}
 
 
-	private function send_booking_created($booking_id)
+	private function send_booking_created($booking_id, $actor_user_id = null)
 	{
 		$booking = $this->CI->bookings_model->include(['user', 'room', 'period'])->get($booking_id);
 
 		if ( ! $booking || empty($booking->user) || empty($booking->user->email)) {
 			return;
 		}
+
+		$created_by_name = $this->created_by_name($actor_user_id, $booking->user_id);
 
 		$this->CI->mailer->send(
 			$booking->user->email,
@@ -160,13 +168,14 @@ class Booking_events
 			[
 				'booking' => $booking,
 				'user' => $booking->user,
+				'created_by_name' => $created_by_name,
 				'view_url' => site_url('bookings/view/' . $booking->booking_id),
 			]
 		);
 	}
 
 
-	private function send_recurring_created($repeat_id)
+	private function send_recurring_created($repeat_id, $actor_user_id = null)
 	{
 		$repeat = $this->CI->bookings_repeat_model->include(['user', 'room', 'period'])->get($repeat_id);
 
@@ -179,6 +188,8 @@ class Booking_events
 			->where('status', Bookings_model::STATUS_BOOKED)
 			->count_all_results('bookings');
 
+		$created_by_name = $this->created_by_name($actor_user_id, $repeat->user_id);
+
 		$this->CI->mailer->send(
 			$repeat->user->email,
 			$repeat->user->displayname ?: $repeat->user->username,
@@ -187,6 +198,7 @@ class Booking_events
 			[
 				'user' => $repeat->user,
 				'count' => $count,
+				'created_by_name' => $created_by_name,
 				'lines' => [
 					sprintf('%s - %s', $repeat->room->name, $repeat->period->name),
 				],
@@ -196,7 +208,7 @@ class Booking_events
 	}
 
 
-	private function send_bookings_created_grouped(array $booking_ids)
+	private function send_bookings_created_grouped(array $booking_ids, $actor_user_id = null)
 	{
 		$user = null;
 		$lines = [];
@@ -213,6 +225,8 @@ class Booking_events
 
 		if ( ! $user || empty($user->email)) return;
 
+		$created_by_name = $this->created_by_name($actor_user_id, $user->user_id);
+
 		$this->CI->mailer->send(
 			$user->email,
 			$user->displayname ?: $user->username,
@@ -221,6 +235,7 @@ class Booking_events
 			[
 				'user' => $user,
 				'count' => count($lines),
+				'created_by_name' => $created_by_name,
 				'lines' => $lines,
 				'view_url' => site_url('bookings'),
 			]
@@ -228,7 +243,7 @@ class Booking_events
 	}
 
 
-	private function send_recurring_created_grouped(array $repeat_ids)
+	private function send_recurring_created_grouped(array $repeat_ids, $actor_user_id = null)
 	{
 		$user = null;
 		$lines = [];
@@ -245,6 +260,8 @@ class Booking_events
 
 		if ( ! $user || empty($user->email)) return;
 
+		$created_by_name = $this->created_by_name($actor_user_id, $user->user_id);
+
 		$this->CI->mailer->send(
 			$user->email,
 			$user->displayname ?: $user->username,
@@ -253,10 +270,37 @@ class Booking_events
 			[
 				'user' => $user,
 				'count' => count($lines),
+				'created_by_name' => $created_by_name,
 				'lines' => $lines,
 				'view_url' => site_url('bookings'),
 			]
 		);
+	}
+
+
+	/**
+	 * Display name of the actor, but only when they aren't the booking's owner
+	 * (i.e. someone booked on another user's behalf).
+	 *
+	 */
+	private function created_by_name($actor_user_id, $owner_user_id)
+	{
+		if (empty($actor_user_id) || (int) $actor_user_id === (int) $owner_user_id) {
+			return null;
+		}
+
+		return $this->get_display_name($actor_user_id);
+	}
+
+
+	private function get_display_name($user_id)
+	{
+		if (empty($user_id)) return null;
+
+		$this->CI->load->model('users_model');
+		$user = $this->CI->users_model->get_by_id($user_id);
+
+		return $user ? ($user->displayname ?: $user->username) : null;
 	}
 
 

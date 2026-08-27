@@ -441,7 +441,7 @@ class MultiAgent extends BaseAgent
 				$ids_by_owner[$owner_id][] = $booking_id;
 			}
 			foreach ($ids_by_owner as $owner_booking_ids) {
-				Events::trigger(EventType::BOOKING_CREATED, ['booking_ids' => $owner_booking_ids]);
+				Events::trigger(EventType::BOOKING_CREATED, ['booking_ids' => $owner_booking_ids, 'actor_user_id' => $this->user->user_id]);
 			}
 
 			return true;
@@ -785,7 +785,7 @@ class MultiAgent extends BaseAgent
 
 		// Trigger one BOOKING_CREATED event per distinct owner, not per series.
 		foreach ($repeat_ids_by_owner as $owner_repeat_ids) {
-			Events::trigger(EventType::BOOKING_CREATED, ['repeat_ids' => $owner_repeat_ids, 'summary' => true]);
+			Events::trigger(EventType::BOOKING_CREATED, ['repeat_ids' => $owner_repeat_ids, 'summary' => true, 'actor_user_id' => $this->user->user_id]);
 		}
 
 		return TRUE;

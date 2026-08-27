@@ -334,7 +334,7 @@ class SingleAgent extends BaseAgent
 		if ($booking_id) {
 			$this->success = TRUE;
 			$this->message = lang('booking.success.created');
-			Events::trigger(EventType::BOOKING_CREATED, ['booking_id' => $booking_id]);
+			Events::trigger(EventType::BOOKING_CREATED, ['booking_id' => $booking_id, 'actor_user_id' => $this->user->user_id]);
 			return TRUE;
 		}
 
@@ -544,7 +544,7 @@ class SingleAgent extends BaseAgent
 
 		$this->success = TRUE;
 		$this->message = lang('booking.success.created.multiple');
-		Events::trigger(EventType::BOOKING_CREATED, ['repeat_id' => $repeat_id, 'summary' => true]);
+		Events::trigger(EventType::BOOKING_CREATED, ['repeat_id' => $repeat_id, 'summary' => true, 'actor_user_id' => $this->user->user_id]);
 		return TRUE;
 	}
 
