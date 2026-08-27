@@ -26,6 +26,45 @@ $lang['settings.board.intro'] = 'Elige qué salas aparecen en el panel público 
 $lang['settings.board.save.success'] = 'La configuración del panel se ha actualizado.';
 $lang['settings.board.no_rooms'] = 'Todavía no se ha configurado ninguna sala.';
 
+$lang['settings.backup'] = 'Copia de seguridad';
+
+$lang['settings.backup.local.title'] = 'Copia de seguridad local';
+$lang['settings.backup.local.intro'] = 'Descarga una copia de seguridad completa de tus datos (base de datos y archivos subidos) en un único archivo.';
+$lang['settings.backup.local.download'] = 'Descargar copia de seguridad';
+$lang['settings.backup.error.create'] = 'No se pudo crear la copia de seguridad. Consulta el registro de la aplicación para más detalles.';
+
+$lang['settings.backup.restore.title'] = 'Restaurar desde una copia de seguridad';
+$lang['settings.backup.restore.warning'] = 'Restaurar una copia de seguridad reemplaza TODOS los datos actuales por el contenido del archivo. Esta acción no se puede deshacer. Se toma automáticamente una copia de seguridad del estado actual antes de restaurar.';
+$lang['settings.backup.restore.file'] = 'Archivo de copia de seguridad';
+$lang['settings.backup.restore.confirm_label'] = 'Escribe "%s" para confirmar';
+$lang['settings.backup.restore.button'] = 'Restaurar';
+$lang['settings.backup.restore.bad_confirmation'] = 'El texto de confirmación no coincide. No se ha restaurado nada.';
+$lang['settings.backup.restore.success'] = 'La copia de seguridad se ha restaurado.';
+$lang['settings.backup.restore.error'] = 'Error al restaurar. Consulta el registro de la aplicación para más detalles.';
+
+$lang['settings.backup.drive.title'] = 'Google Drive';
+$lang['settings.backup.drive.intro'] = 'Conecta tu propia cuenta de Google para enviar copias de seguridad a Drive y restaurarlas. Deberás crear credenciales OAuth en tu propio proyecto de Google Cloud Console y registrar la URL de redirección que se muestra a continuación.';
+$lang['settings.backup.drive.redirect_uri_label'] = 'URL de redirección a registrar en Google';
+$lang['settings.backup.drive.client_id'] = 'ID de cliente';
+$lang['settings.backup.drive.client_secret'] = 'Secreto de cliente';
+$lang['settings.backup.drive.save.success'] = 'Las credenciales de Google Drive se han guardado.';
+$lang['settings.backup.drive.status.connected'] = 'Conectado a Google Drive.';
+$lang['settings.backup.drive.connect'] = 'Conectar Google Drive';
+$lang['settings.backup.drive.connect.success'] = 'Google Drive conectado correctamente.';
+$lang['settings.backup.drive.disconnect'] = 'Desconectar';
+$lang['settings.backup.drive.disconnect.success'] = 'Google Drive se ha desconectado.';
+$lang['settings.backup.drive.backup_now'] = 'Guardar en Drive ahora';
+$lang['settings.backup.drive.upload.success'] = 'Copia de seguridad subida a Google Drive correctamente.';
+$lang['settings.backup.drive.error.no_credentials'] = 'Guarda primero tu ID de cliente y secreto de Google.';
+$lang['settings.backup.drive.error.auth_failed'] = 'La autorización de Google Drive ha fallado.';
+$lang['settings.backup.drive.error.not_connected'] = 'Google Drive no está conectado.';
+$lang['settings.backup.drive.error.upload'] = 'No se pudo subir la copia de seguridad a Google Drive.';
+$lang['settings.backup.drive.error.download'] = 'No se pudo descargar la copia de seguridad desde Google Drive.';
+$lang['settings.backup.drive.files.title'] = 'Copias de seguridad en Drive';
+$lang['settings.backup.drive.files.name'] = 'Nombre';
+$lang['settings.backup.drive.files.date'] = 'Fecha';
+$lang['settings.backup.drive.files.empty'] = 'Todavía no hay copias de seguridad en Google Drive.';
+
 $lang['settings.general.bookings'] = 'Reservas';
 $lang['settings.general.datetime'] = 'Fechas y horas';
 $lang['settings.general.datetime.hint'] = 'Las fechas siguen el formato PHP';

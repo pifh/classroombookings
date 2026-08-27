@@ -26,6 +26,45 @@ $lang['settings.board.intro'] = 'Wählen Sie, welche Räume auf der öffentliche
 $lang['settings.board.save.success'] = 'Die Tafel-Einstellungen wurden aktualisiert.';
 $lang['settings.board.no_rooms'] = 'Es wurden noch keine Räume eingerichtet.';
 
+$lang['settings.backup'] = 'Sicherung';
+
+$lang['settings.backup.local.title'] = 'Lokale Sicherung';
+$lang['settings.backup.local.intro'] = 'Laden Sie eine vollständige Sicherung Ihrer Daten (Datenbank und hochgeladene Dateien) als einzelne Datei herunter.';
+$lang['settings.backup.local.download'] = 'Sicherung herunterladen';
+$lang['settings.backup.error.create'] = 'Die Sicherung konnte nicht erstellt werden. Details im Anwendungsprotokoll.';
+
+$lang['settings.backup.restore.title'] = 'Aus einer Sicherung wiederherstellen';
+$lang['settings.backup.restore.warning'] = 'Das Wiederherstellen einer Sicherung ersetzt ALLE aktuellen Daten durch den Inhalt der Datei. Dies kann nicht rückgängig gemacht werden. Vor der Wiederherstellung wird automatisch eine Sicherheitskopie des aktuellen Zustands erstellt.';
+$lang['settings.backup.restore.file'] = 'Sicherungsdatei';
+$lang['settings.backup.restore.confirm_label'] = 'Geben Sie "%s" ein, um zu bestätigen';
+$lang['settings.backup.restore.button'] = 'Wiederherstellen';
+$lang['settings.backup.restore.bad_confirmation'] = 'Der Bestätigungstext stimmt nicht überein. Es wurde nichts wiederhergestellt.';
+$lang['settings.backup.restore.success'] = 'Die Sicherung wurde wiederhergestellt.';
+$lang['settings.backup.restore.error'] = 'Wiederherstellung fehlgeschlagen. Details im Anwendungsprotokoll.';
+
+$lang['settings.backup.drive.title'] = 'Google Drive';
+$lang['settings.backup.drive.intro'] = 'Verbinden Sie Ihr eigenes Google-Konto, um Sicherungen zu Drive zu senden und daraus wiederherzustellen. Sie müssen OAuth-Anmeldedaten in Ihrem eigenen Google-Cloud-Console-Projekt erstellen und die unten angezeigte Weiterleitungs-URL registrieren.';
+$lang['settings.backup.drive.redirect_uri_label'] = 'Bei Google zu registrierende Weiterleitungs-URL';
+$lang['settings.backup.drive.client_id'] = 'Client-ID';
+$lang['settings.backup.drive.client_secret'] = 'Client-Geheimnis';
+$lang['settings.backup.drive.save.success'] = 'Die Google-Drive-Anmeldedaten wurden gespeichert.';
+$lang['settings.backup.drive.status.connected'] = 'Mit Google Drive verbunden.';
+$lang['settings.backup.drive.connect'] = 'Google Drive verbinden';
+$lang['settings.backup.drive.connect.success'] = 'Google Drive erfolgreich verbunden.';
+$lang['settings.backup.drive.disconnect'] = 'Trennen';
+$lang['settings.backup.drive.disconnect.success'] = 'Google Drive wurde getrennt.';
+$lang['settings.backup.drive.backup_now'] = 'Jetzt auf Drive sichern';
+$lang['settings.backup.drive.upload.success'] = 'Sicherung erfolgreich zu Google Drive hochgeladen.';
+$lang['settings.backup.drive.error.no_credentials'] = 'Speichern Sie zuerst Ihre Google-Client-ID und das Geheimnis.';
+$lang['settings.backup.drive.error.auth_failed'] = 'Die Google-Drive-Autorisierung ist fehlgeschlagen.';
+$lang['settings.backup.drive.error.not_connected'] = 'Google Drive ist nicht verbunden.';
+$lang['settings.backup.drive.error.upload'] = 'Das Hochladen der Sicherung zu Google Drive ist fehlgeschlagen.';
+$lang['settings.backup.drive.error.download'] = 'Das Herunterladen der Sicherung von Google Drive ist fehlgeschlagen.';
+$lang['settings.backup.drive.files.title'] = 'Sicherungen auf Drive';
+$lang['settings.backup.drive.files.name'] = 'Name';
+$lang['settings.backup.drive.files.date'] = 'Datum';
+$lang['settings.backup.drive.files.empty'] = 'Noch keine Sicherungen auf Google Drive gefunden.';
+
 $lang['settings.general.bookings'] = 'Buchungen';
 $lang['settings.general.datetime'] = 'Datum und Uhrzeit';
 $lang['settings.general.datetime.hint'] = 'Daten folgen dem PHP-Format';

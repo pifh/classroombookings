@@ -80,6 +80,11 @@ class Menu_model extends CI_Model
 				'icon' => 'calendar_view_day.png',
 				'url' => site_url('settings/board'),
 			];
+			$items['setup'][] = [
+				'label' => lang('settings.backup'),
+				'icon' => 'disk.png',
+				'url' => site_url('settings/backup'),
+			];
 		}
 
 		if (has_permission(Permission::SETUP_SESSIONS)) {

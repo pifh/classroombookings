@@ -26,6 +26,45 @@ $lang['settings.board.intro'] = "Choisissez les salles qui apparaissent sur l'é
 $lang['settings.board.save.success'] = "Les réglages de l'écran ont été mis à jour.";
 $lang['settings.board.no_rooms'] = "Aucune salle n'a encore été configurée.";
 
+$lang['settings.backup'] = 'Sauvegarde';
+
+$lang['settings.backup.local.title'] = 'Sauvegarde locale';
+$lang['settings.backup.local.intro'] = "Téléchargez une sauvegarde complète de vos données (base de données et fichiers envoyés) en un seul fichier.";
+$lang['settings.backup.local.download'] = 'Télécharger une sauvegarde';
+$lang['settings.backup.error.create'] = "Impossible de créer la sauvegarde. Consultez le journal de l'application pour plus de détails.";
+
+$lang['settings.backup.restore.title'] = "Restaurer une sauvegarde";
+$lang['settings.backup.restore.warning'] = "Restaurer une sauvegarde remplace TOUTES les données actuelles par le contenu du fichier. Cette action est irréversible. Une sauvegarde de sécurité de l'état actuel est prise automatiquement avant la restauration.";
+$lang['settings.backup.restore.file'] = 'Fichier de sauvegarde';
+$lang['settings.backup.restore.confirm_label'] = 'Saisissez "%s" pour confirmer';
+$lang['settings.backup.restore.button'] = 'Restaurer';
+$lang['settings.backup.restore.bad_confirmation'] = "Le texte de confirmation ne correspond pas. Rien n'a été restauré.";
+$lang['settings.backup.restore.success'] = 'La sauvegarde a été restaurée.';
+$lang['settings.backup.restore.error'] = "Échec de la restauration. Consultez le journal de l'application pour plus de détails.";
+
+$lang['settings.backup.drive.title'] = 'Google Drive';
+$lang['settings.backup.drive.intro'] = "Connectez votre propre compte Google pour envoyer des sauvegardes sur Drive et les restaurer. Vous devrez créer des identifiants OAuth dans votre propre projet Google Cloud Console et enregistrer l'URL de redirection indiquée ci-dessous.";
+$lang['settings.backup.drive.redirect_uri_label'] = "URL de redirection à enregistrer chez Google";
+$lang['settings.backup.drive.client_id'] = 'ID client';
+$lang['settings.backup.drive.client_secret'] = 'Code secret client';
+$lang['settings.backup.drive.save.success'] = 'Les identifiants Google Drive ont été enregistrés.';
+$lang['settings.backup.drive.status.connected'] = 'Connecté à Google Drive.';
+$lang['settings.backup.drive.connect'] = 'Connecter Google Drive';
+$lang['settings.backup.drive.connect.success'] = 'Google Drive connecté avec succès.';
+$lang['settings.backup.drive.disconnect'] = 'Déconnecter';
+$lang['settings.backup.drive.disconnect.success'] = 'Google Drive a été déconnecté.';
+$lang['settings.backup.drive.backup_now'] = 'Sauvegarder sur Drive maintenant';
+$lang['settings.backup.drive.upload.success'] = 'Sauvegarde envoyée sur Google Drive avec succès.';
+$lang['settings.backup.drive.error.no_credentials'] = "Enregistrez d'abord votre ID client et code secret Google.";
+$lang['settings.backup.drive.error.auth_failed'] = "L'autorisation Google Drive a échoué.";
+$lang['settings.backup.drive.error.not_connected'] = "Google Drive n'est pas connecté.";
+$lang['settings.backup.drive.error.upload'] = "Échec de l'envoi de la sauvegarde vers Google Drive.";
+$lang['settings.backup.drive.error.download'] = "Échec du téléchargement de la sauvegarde depuis Google Drive.";
+$lang['settings.backup.drive.files.title'] = 'Sauvegardes sur Drive';
+$lang['settings.backup.drive.files.name'] = 'Nom';
+$lang['settings.backup.drive.files.date'] = 'Date';
+$lang['settings.backup.drive.files.empty'] = "Aucune sauvegarde trouvée sur Google Drive pour l'instant.";
+
 $lang['settings.general.bookings'] = 'Réservations';
 $lang['settings.general.datetime'] = 'Dates et heures';
 $lang['settings.general.datetime.hint'] = 'Les dates suivent le format PHP';

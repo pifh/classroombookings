@@ -27,6 +27,45 @@ $lang['settings.board.intro'] = 'Choose which rooms appear on the public "now/ne
 $lang['settings.board.save.success'] = 'The board settings have been updated.';
 $lang['settings.board.no_rooms'] = 'No rooms have been set up yet.';
 
+$lang['settings.backup'] = 'Backup';
+
+$lang['settings.backup.local.title'] = 'Local backup';
+$lang['settings.backup.local.intro'] = 'Download a complete backup of your data (database and uploaded files) as a single file.';
+$lang['settings.backup.local.download'] = 'Download backup';
+$lang['settings.backup.error.create'] = 'Could not create the backup. Check the application log for details.';
+
+$lang['settings.backup.restore.title'] = 'Restore from a backup';
+$lang['settings.backup.restore.warning'] = 'Restoring a backup replaces ALL current data with the contents of the file. This cannot be undone. A safety snapshot of the current data is taken automatically before restoring.';
+$lang['settings.backup.restore.file'] = 'Backup file';
+$lang['settings.backup.restore.confirm_label'] = 'Type "%s" to confirm';
+$lang['settings.backup.restore.button'] = 'Restore';
+$lang['settings.backup.restore.bad_confirmation'] = 'Confirmation text did not match. Nothing was restored.';
+$lang['settings.backup.restore.success'] = 'The backup has been restored.';
+$lang['settings.backup.restore.error'] = 'Restore failed. Check the application log for details.';
+
+$lang['settings.backup.drive.title'] = 'Google Drive';
+$lang['settings.backup.drive.intro'] = 'Connect your own Google account to push backups to Drive and restore from them. You will need to create OAuth credentials in your own Google Cloud Console project and register the redirect URL shown below.';
+$lang['settings.backup.drive.redirect_uri_label'] = 'Redirect URL to register with Google';
+$lang['settings.backup.drive.client_id'] = 'Client ID';
+$lang['settings.backup.drive.client_secret'] = 'Client secret';
+$lang['settings.backup.drive.save.success'] = 'Google Drive credentials have been saved.';
+$lang['settings.backup.drive.status.connected'] = 'Connected to Google Drive.';
+$lang['settings.backup.drive.connect'] = 'Connect Google Drive';
+$lang['settings.backup.drive.connect.success'] = 'Google Drive connected successfully.';
+$lang['settings.backup.drive.disconnect'] = 'Disconnect';
+$lang['settings.backup.drive.disconnect.success'] = 'Google Drive has been disconnected.';
+$lang['settings.backup.drive.backup_now'] = 'Backup to Drive now';
+$lang['settings.backup.drive.upload.success'] = 'Backup uploaded to Google Drive successfully.';
+$lang['settings.backup.drive.error.no_credentials'] = 'Save your Google Client ID and secret first.';
+$lang['settings.backup.drive.error.auth_failed'] = 'Google Drive authorisation failed.';
+$lang['settings.backup.drive.error.not_connected'] = 'Google Drive is not connected.';
+$lang['settings.backup.drive.error.upload'] = 'Failed to upload the backup to Google Drive.';
+$lang['settings.backup.drive.error.download'] = 'Failed to download the backup from Google Drive.';
+$lang['settings.backup.drive.files.title'] = 'Backups on Drive';
+$lang['settings.backup.drive.files.name'] = 'Name';
+$lang['settings.backup.drive.files.date'] = 'Date';
+$lang['settings.backup.drive.files.empty'] = 'No backups found on Google Drive yet.';
+
 $lang['settings.general.bookings'] = 'Bookings';
 $lang['settings.general.datetime'] = 'Dates and Times';
 $lang['settings.general.datetime.hint'] = 'Dates follow the PHP format';
