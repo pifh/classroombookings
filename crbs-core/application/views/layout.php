@@ -209,7 +209,7 @@ var BASE_URL = "<?= base_url() ?>";
 								<?= strtolower(lang('app.version')) ?>
 								<?= VERSION ?>.
 							<br>
-							&copy; <?= date('Y') ?> Craig A Rodway.</span>
+							&copy; <?= date('Y') ?> Craig A Rodway. Fork personnalisé par PifH.</span>
 							<br />
 							<?php
 							$fmt = "%s: %s %s";

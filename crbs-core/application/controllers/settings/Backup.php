@@ -12,7 +12,7 @@ class Backup extends MY_Controller
 		$this->require_logged_in();
 		$this->require_permission(Permission::SETUP_SETTINGS);
 
-		$this->load->library(['databackup', 'googledrive']);
+		$this->load->library(['DataBackup', 'GoogleDrive']);
 
 		$this->data['showtitle'] = lang('settings.backup');
 	}

@@ -2,6 +2,8 @@
 
 By Craig A Rodway.
 
+**This is a personal fork maintained by [PifH](https://github.com/pifh), with custom modifications (email notifications, public "now/next" board, full backup/restore with Google Drive, and more) not intended to be merged upstream.**
+
 [![License: AGPLv3](https://img.shields.io/static/v1?label=License&message=AGPLv3&color=3DA639&style=flat-square)](https://www.gnu.org/licenses/agpl-3.0.html)
 [![Twitter Follow](https://img.shields.io/twitter/follow/crbsapp.svg?style=social)](https://twitter.com/crbsapp)
 
